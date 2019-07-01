@@ -24,7 +24,6 @@ import fr.theshark34.supdate.SUpdate;
 import fr.theshark34.supdate.application.integrated.FileDeleter;
 import fr.theshark34.swinger.Swinger;
 
-@SuppressWarnings("deprecation")
 public class Launcher {
 	
 	public static final GameVersion MC_VERSION = new GameVersion("1.13.2", GameType.V1_8_HIGHER);	

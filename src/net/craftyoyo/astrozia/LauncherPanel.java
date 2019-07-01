@@ -54,8 +54,8 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
     private STexturedButton webButton = new STexturedButton(getResource("web.png"));
     private JEditorPane jep = new JEditorPane();
     private RamSelector ramSelector = new RamSelector(new File(Launcher.MC_DIR, "launcher.properties"));
-	private SColoredBar progressBar = new SColoredBar(Swinger.getTransparentWhite(100),Swinger.getTransparentInstance(new Color(0,255,0), 175));
-	private JLabel infoLabel = new JLabel("Cliquez sur Jouer ! ", SwingConstants.CENTER);
+	private SColoredBar progressBar = new SColoredBar(Swinger.getTransparentWhite(100),Swinger.getTransparentInstance(new Color(0,190,0), 175));
+	private JLabel infoLabel = new JLabel("Cliquez sur Play ! ", SwingConstants.CENTER);
 	
 	public LauncherPanel() {
 		this.setLayout(null);
@@ -64,7 +64,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		usernameField.setOpaque(true);
 		usernameField.setBorder(null);
 		usernameField.setForeground(Color.BLACK);
-		usernameField.setCaretColor(Color.WHITE);
+		usernameField.setCaretColor(Color.blue);
 		usernameField.setFont(usernameField.getFont().deriveFont(20F));
 		usernameField.setBounds(65, 252, 330, 31);
 		this.add(usernameField);
@@ -74,7 +74,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		passwordField.setOpaque(true);
 		passwordField.setBorder(null);
 		passwordField.setForeground(Color.BLACK);
-		passwordField.setCaretColor(Color.WHITE);
+		passwordField.setCaretColor(Color.blue);
 		passwordField.setFont(usernameField.getFont());
 		passwordField.setBounds(65, 325, 330, 31);
 		this.add(passwordField);

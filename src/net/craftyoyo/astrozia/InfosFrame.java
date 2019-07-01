@@ -9,7 +9,11 @@ import java.io.InputStream;
 
 public class InfosFrame extends JDialog{
 
-    private static InfosFrame instance;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static InfosFrame instance;
 
     public static InfosFrame getInstance() {
         if (instance == null)

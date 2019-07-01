@@ -12,6 +12,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -21,8 +22,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.text.html.HTMLEditorKit;
 
 import fr.litarvan.openauth.AuthenticationException;
@@ -35,6 +39,13 @@ import fr.theshark34.swinger.colored.SColoredBar;
 import fr.theshark34.swinger.event.SwingerEvent;
 import fr.theshark34.swinger.event.SwingerEventListener;
 import fr.theshark34.swinger.textured.STexturedButton;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 
 @SuppressWarnings("serial")
@@ -56,7 +67,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
     private RamSelector ramSelector = new RamSelector(new File(Launcher.MC_DIR, "launcher.properties"));
 	private SColoredBar progressBar = new SColoredBar(Swinger.getTransparentWhite(100),Swinger.getTransparentInstance(new Color(0,190,0), 175));
 	private JLabel infoLabel = new JLabel("Cliquez sur Play ! ", SwingConstants.CENTER);
-	
+
 	public LauncherPanel() {
 		this.setLayout(null);
 		System.out.println(Launcher.MC_DIR);
@@ -148,18 +159,20 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         this.add(title);
         
         //Navigateur web
-        
+  
+       
+        //new LoadWebPage().setVisible(true);
         
         this.jep.setBounds(410, 40, 860, 600);
 		this.jep.setOpaque(false);
 		this.jep.setBorder(null);
 		this.jep.setEditable(false);
         HTMLEditorKit kit = new HTMLEditorKit();
-
+   
         this.jep.setEditorKit(kit);
-
         try {
         	System.out.println("start web");
+        	
         	this.jep.setPage(new URL("http://astrozia-launcher.cf/"));
         	this.add(jep);
         	System.out.println(kit);
@@ -167,6 +180,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         }
         catch (IOException e) {
         	System.out.println("try web");
+        	
         	this.jep.setContentType("text/css;  charset=UTF-8");
         	this.jep.setContentType("text/html; charset=UTF-8");
         	this.jep.setText("imposible de visualiser la page");

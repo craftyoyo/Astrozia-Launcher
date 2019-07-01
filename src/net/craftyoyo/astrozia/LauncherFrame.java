@@ -13,7 +13,7 @@ public class LauncherFrame extends JFrame {
 
 	private static LauncherFrame instance;
 	private LauncherPanel launcherPanel;
-	
+
 	public LauncherFrame()
 	{
 		this.setTitle("Astrozia");
@@ -24,21 +24,21 @@ public class LauncherFrame extends JFrame {
 		this.setResizable(false);
 		this.setIconImage(Swinger.getResource("logo.png"));
 		this.setContentPane(launcherPanel = new LauncherPanel());
-		
-		
+
+
 		WindowMover mover = new WindowMover(this);
 		this.addMouseListener(mover);
 		this.addMouseMotionListener(mover);
-		
+
 		this.setVisible(true);
 	}
-		
+
 	public static void main(String[] args) {
-		
-	
+
+		//new LoadWebPage().setVisible(true);
 		new File(GameDirGenerator.createGameDir("astrozia"), "Launcher"); // Version
 		//System.out.println();
-		 
+
 		System.out.println("Bonjour :)"+
                 "\n**************************************************"+
                 "\n          Created by craftyoyo                 "+
@@ -49,7 +49,7 @@ public class LauncherFrame extends JFrame {
 		Swinger.setResourcePath("/net/craftyoyo/astrozia/ressources/");
 		instance = new LauncherFrame();
 	}
-	
+
 	public static  LauncherFrame getInstance() {
 		return instance;
 	}

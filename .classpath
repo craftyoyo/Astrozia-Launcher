@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="E:/DEV/Launcher/LIBS/openlauncherlib-3.0.5.jar"/>
 	<classpathentry kind="lib" path="E:/DEV/Launcher/LIBS/s-update-3.1.0-BETA.jar"/>
 	<classpathentry kind="lib" path="E:/DEV/Launcher/LIBS/swinger-1.0.0-BETA.jar"/>
+	<classpathentry kind="lib" path="E:/DEV/Launcher/LIBS/jfxrt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

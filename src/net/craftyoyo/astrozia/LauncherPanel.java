@@ -50,7 +50,7 @@ import javafx.stage.Stage;
 
 @SuppressWarnings("serial")
 public class LauncherPanel extends JPanel implements SwingerEventListener {
-	private Image backGround = Swinger.getResource("astrozia.png");
+	private Image backGround = Swinger.getResource("fond.jpg");
 	private Saver saver = new Saver(new File(Launcher.MC_DIR,"launcher.properties"));
 	private JTextField usernameField =new JTextField(this.saver.get("username"));
 	private JPasswordField passwordField =new JPasswordField(this.saver.get("password"));

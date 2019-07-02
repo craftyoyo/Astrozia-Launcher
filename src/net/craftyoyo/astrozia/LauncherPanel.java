@@ -69,8 +69,12 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 	private JLabel infoLabel = new JLabel("Cliquez sur Play ! ", SwingConstants.CENTER);
 
 	public LauncherPanel() {
+		System.out.println("==========DEBUG INFO==========");
+		System.out.println("RAM: "+saver.get("ram")+" Not working set by default 3Gb");
+		System.out.println("USERNAME: "+saver.get("username"));
+		System.out.println("INSTANCE FOLDER: "+Launcher.MC_DIR);
+		System.out.println("==============================");
 		this.setLayout(null);
-		System.out.println(Launcher.MC_DIR);
 		//Champ nom de compte 
 		usernameField.setOpaque(false);
 		usernameField.setBorder(null);
@@ -107,7 +111,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		
 		this.ramButton.addEventListener(this);
 		this.ramButton.setBounds(1200, 6, 31, 31);
-		add(ramButton);
+		//add(ramButton);
 		
 		//Boutton social
 		
@@ -133,7 +137,6 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 	    
 		progressBar.setBounds(0,700,1280,20);
 		this.add(progressBar);
-		
 		//Label
 		
 		infoLabel.setForeground(Color.WHITE);
@@ -178,16 +181,14 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
    
         this.jep.setEditorKit(kit);
         try {
-        	System.out.println("start web");
+        	System.out.println("start news loading");
         	
         	this.jep.setPage(new URL("http://astrozia-launcher.cf/"));
         	this.add(jep);
-        	System.out.println(kit);
-        	System.out.println(jep);
+        	//System.out.println(kit);
+        	//System.out.println(jep);
         }
         catch (IOException e) {
-        	System.out.println("try web");
-        	
         	this.jep.setContentType("text/css;  charset=UTF-8");
         	this.jep.setContentType("text/html; charset=UTF-8");
         	this.jep.setText("imposible de visualiser la page");
@@ -247,7 +248,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 						return;
 					}
 					saver.set("username",usernameField.getText());
-					//saver.set("password",passwordField.getText());
+					saver.set("password",passwordField.getText());
 					try {
 						Launcher.update();
 					} catch (Exception e) {

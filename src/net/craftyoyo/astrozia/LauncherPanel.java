@@ -72,21 +72,22 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		this.setLayout(null);
 		System.out.println(Launcher.MC_DIR);
 		//Champ nom de compte 
-		usernameField.setOpaque(true);
+		usernameField.setOpaque(false);
 		usernameField.setBorder(null);
-		usernameField.setForeground(Color.BLACK);
-		usernameField.setCaretColor(Color.blue);
-		usernameField.setFont(usernameField.getFont().deriveFont(20F));
+		usernameField.setForeground(Color.black);
+		usernameField.setCaretColor(Color.black);
+		usernameField.setFont(getCustomFont().deriveFont(18F));
 		usernameField.setBounds(65, 252, 330, 31);
 		this.add(usernameField);
 		
 		//Champ Mots de passe
 		
-		passwordField.setOpaque(true);
+		passwordField.setOpaque(false);
 		passwordField.setBorder(null);
-		passwordField.setForeground(Color.BLACK);
-		passwordField.setCaretColor(Color.blue);
-		passwordField.setFont(usernameField.getFont());
+		passwordField.setForeground(Color.black);
+		passwordField.setCaretColor(Color.black);
+		passwordField.setFont(getCustomFont().deriveFont(18F));
+		passwordField.setEchoChar('#');
 		passwordField.setBounds(65, 325, 330, 31);
 		this.add(passwordField);
 		
@@ -136,7 +137,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		//Label
 		
 		infoLabel.setForeground(Color.WHITE);
-		infoLabel.setFont(infoLabel.getFont().deriveFont(14F));
+		infoLabel.setFont(getCustomFont().deriveFont(12F));
 		infoLabel.setBounds(0,700 , 1280,20 );
 		this.add(infoLabel);
 		
@@ -162,10 +163,16 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
   
        
         //new LoadWebPage().setVisible(true);
-        
-        this.jep.setBounds(410, 40, 860, 600);
+        JLabel news = new JLabel("<html><center><font size=10><b>News</b></font></center><br></font></html>" );
+        news.setForeground(Color.white);
+        news.setBounds(412,130, 400,50 );
+        news.setFont(getCustomFont().deriveFont(12F));
+        this.add(news);
+        this.jep.setBounds(411, 171, 860, 600);
 		this.jep.setOpaque(false);
 		this.jep.setBorder(null);
+		this.jep.setBackground( new Color(255, 0, 0, 50) );
+		this.jep.setFont(getCustomFont().deriveFont(20F));
 		this.jep.setEditable(false);
         HTMLEditorKit kit = new HTMLEditorKit();
    

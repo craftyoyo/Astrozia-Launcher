@@ -23,7 +23,7 @@ public class InfosFrame extends JDialog{
 
     public InfosFrame() {
         super(LauncherFrame.getInstance(), "Infos", true);
-        setSize(280, 200);
+        setSize(350, 200);
         setResizable(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(LauncherFrame.getInstance());
@@ -39,7 +39,8 @@ public class InfosFrame extends JDialog{
 
        JLabel info = new JLabel("<html><center><font size=6><b>© Astrozia - 2019</b></font></center><br>"
                 + "Launcher créer par craftyoyo.<br>"
-                + "Toute copie intégrale ou partielle est interdite sous <br>peine de poursuites.<br>"
+                + "Ce launcher est <font color=#31C43F>Open-Source :)</font><br>"
+                + "Lien du git: https://github.com/craftyoyo/Astrozia-Launcher<br>"
                 + "<br>Version Launcher : <font color=#31C43F>0.0.1 BETA</font>"
                 + "<br>Version Client : <font color=#31C43F>NOPE :D</font>"
                 + "<br>Version Serveur : <font color=#31C43F>NOPE :D</font></html>" );

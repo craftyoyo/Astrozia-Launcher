@@ -46,8 +46,9 @@ public class LauncherFrame extends JFrame {
                 "\n Le lien https://discord.gg/k8NHNAT"+
                 "\n**************************************************");
 		Swinger.setSystemLookNFeel();
-		Swinger.setResourcePath("/net/craftyoyo/astrozia/ressources/");
+		Swinger.setResourcePath("/net/craftyoyo/ressources/");
 		instance = new LauncherFrame();
+		//new AePlayWave("HungerGames1.wav").start();
 	}
 
 	public static  LauncherFrame getInstance() {

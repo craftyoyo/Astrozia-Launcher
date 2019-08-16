@@ -12,7 +12,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -26,7 +25,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.text.html.HTMLEditorKit;
 
 import fr.litarvan.openauth.AuthenticationException;
@@ -39,17 +37,16 @@ import fr.theshark34.swinger.colored.SColoredBar;
 import fr.theshark34.swinger.event.SwingerEvent;
 import fr.theshark34.swinger.event.SwingerEventListener;
 import fr.theshark34.swinger.textured.STexturedButton;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
+
+
+
 
 
 @SuppressWarnings("serial")
 public class LauncherPanel extends JPanel implements SwingerEventListener {
+    private final JScrollPane scrollPane = new JScrollPane();
+    private final JTextPane browser = new JTextPane();
+	
 	private Image backGround = Swinger.getResource("fond.jpg");
 	private Saver saver = new Saver(new File(Launcher.MC_DIR,"launcher.properties"));
 	private JTextField usernameField =new JTextField(this.saver.get("username"));
@@ -67,8 +64,9 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
     private RamSelector ramSelector = new RamSelector(new File(Launcher.MC_DIR, "launcher.properties"));
 	private SColoredBar progressBar = new SColoredBar(Swinger.getTransparentWhite(100),Swinger.getTransparentInstance(new Color(0,190,0), 175));
 	private JLabel infoLabel = new JLabel("Cliquez sur Play ! ", SwingConstants.CENTER);
+	
 
-	public LauncherPanel() {
+	public  LauncherPanel() {
 		System.out.println("==========DEBUG INFO==========");
 		System.out.println("RAM: "+saver.get("ram")+" Not working set by default 3Gb");
 		System.out.println("USERNAME: "+saver.get("username"));
@@ -139,12 +137,47 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
 		this.add(progressBar);
 		//Label
 		
+		
+		    MineStat ms = new MineStat("mc.hypixel.net", 25565);
+		    System.out.println("Minecraft server status of " + ms.getAddress() + " on port " + ms.getPort() + ":");
+		    if(ms.isServerUp())
+		    {
+		     System.out.println("Server is online running version " + ms.getVersion() + " with " + ms.getCurrentPlayers() + " out of " + ms.getMaximumPlayers() + " players.");
+		     System.out.println("Message of the day: " + ms.getMotd());
+		     System.out.println("Latency: " + ms.getLatency() + "ms");
+		    }
+		    else
+		      System.out.println("Server is offline!");
+		  
+		
+		
 		infoLabel.setForeground(Color.WHITE);
 		infoLabel.setFont(getCustomFont().deriveFont(12F));
 		infoLabel.setBounds(0,700 , 1280,20 );
 		this.add(infoLabel);
 		
 		//Label
+		
+		 if(ms.isServerUp())
+		    { 
+			 JLabel mcs = new JLabel("<html><p style=\"font-size: 15px;\">Server status: <b style=\"color: green;\">ONLINE!</b><br>"
+		    
+		+ "Online players: " + ms.getCurrentPlayers() + 
+		"<br>Max players: " + ms.getMaximumPlayers() + 
+		"<br>Ping: " + ms.getLatency() + "Ms</p></html>");
+			 mcs.setForeground(Color.white);
+		        mcs.setBounds(65,580 , 400,100 );
+		        mcs.setFont(getCustomFont().deriveFont(12F));
+		        this.add(mcs);}
+		 else 
+		 {
+			 JLabel mcs = new JLabel("<html><p style=\"font-size: 15px;\">Server status: <b style=\"color: red;\">OFFLINE ;(</b>");
+			 mcs.setForeground(Color.white);
+		        mcs.setBounds(65,580 , 400,100 );
+		        mcs.setFont(getCustomFont().deriveFont(12F));
+		        this.add(mcs);
+		 };
+        
 		
 		JLabel info = new JLabel("<html><center><font size=6><b>Adresse mail mojang:</b></font></center><br></font></html>" );
         info.setForeground(Color.white);
@@ -156,46 +189,46 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         info1.setBounds(65,290 , 400,50 );
         info1.setFont(getCustomFont().deriveFont(12F));
         this.add(info1);
-        JLabel title = new JLabel("<html><center><font size=10><b>Serveur de kikoo :)</b></font></center><br></font></html>" );
+        JLabel title = new JLabel("<html><p style=\"font-size: 50px;\"><b>ASTROZIA</b></p></html>" );
         title.setForeground(Color.white);
-        title.setBounds(90,10, 400,50 );
+        title.setBounds(60,10, 600,100 );
         title.setFont(getCustomFont().deriveFont(12F));
         this.add(title);
         
         //Navigateur web
-  
-       
-        //new LoadWebPage().setVisible(true);
+        
         JLabel news = new JLabel("<html><center><font size=10><b>News</b></font></center><br></font></html>" );
         news.setForeground(Color.white);
         news.setBounds(412,130, 400,50 );
         news.setFont(getCustomFont().deriveFont(12F));
         this.add(news);
-        this.jep.setBounds(411, 171, 860, 600);
+        
+        this.jep.setBounds(411, 171, 777, 390);
 		this.jep.setOpaque(false);
+        this.jep.setBackground(Color.DARK_GRAY);
+        this.jep.setContentType("text/html");
+        this.jep.setText("<html><body><font color=\"#808080\"><br><br><br><br><br><br><br><center><h1>Loading page..</h1></center></font></body></html>");
 		this.jep.setBorder(null);
 		this.jep.setBackground( new Color(255, 0, 0, 50) );
 		this.jep.setFont(getCustomFont().deriveFont(20F));
-		this.jep.setEditable(false);
+		this.jep.setEditable(true);
         HTMLEditorKit kit = new HTMLEditorKit();
-   
+        this.scrollPane.setViewportView(this.browser);
         this.jep.setEditorKit(kit);
-        try {
-        	System.out.println("start news loading");
-        	
-        	this.jep.setPage(new URL("http://astrozia-launcher.cf/"));
+        try {     
+        	this.jep.setPage(new URL("http://ysavary.fr/index.html"));
         	this.add(jep);
-        	//System.out.println(kit);
-        	//System.out.println(jep);
+        	System.out.println(kit);
+        	System.out.println(jep);
         }
         catch (IOException e) {
         	this.jep.setContentType("text/css;  charset=UTF-8");
         	this.jep.setContentType("text/html; charset=UTF-8");
         	this.jep.setText("imposible de visualiser la page");
+        }
+        
  }
- 
-	}
-
+	
 	
 	
 	public SColoredBar getProgressBar()

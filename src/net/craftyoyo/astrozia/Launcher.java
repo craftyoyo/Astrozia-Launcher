@@ -79,7 +79,7 @@ public class Launcher {
 	{
 		LauncherFrame.getInstance().getLauncherPanel().setInfolabel("Lancement du jeu...");
 		ExternalLaunchProfile profile = MinecraftLauncher.createExternalProfile(MC_INFOS, GameFolder.BASIC, authinfos);
-		profile.getVmArgs().add("-Xmx3072M");
+		profile.getVmArgs().add("-Xms512M -Xmx3072M");
 		profile.getArgs().add("--server 127.0.0.1 --port 25565");
 		//profile.setParameters((Object[])(((String)"-Xmx2G")));
 		ExternalLauncher launcher = new ExternalLauncher(profile);

@@ -197,6 +197,7 @@ public class LauncherPanel extends JPanel implements SwingerEventListener {
         
         //Navigateur web
         
+       
         JLabel news = new JLabel("<html><center><font size=10><b>News</b></font></center><br></font></html>" );
         news.setForeground(Color.white);
         news.setBounds(412,130, 400,50 );

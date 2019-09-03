@@ -48,7 +48,7 @@ public class LauncherFrame extends JFrame {
 		Swinger.setSystemLookNFeel();
 		Swinger.setResourcePath("/net/craftyoyo/ressources/");
 		instance = new LauncherFrame();
-		//new AePlayWave("HungerGames1.wav").start();
+		new AePlayWave("HungerGames1.wav").start();
 	}
 
 	public static  LauncherFrame getInstance() {
